@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IslamicAura — Light, Design &amp; Soul</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;family=Lateef&amp;display=swap" rel="stylesheet">
+  <style>
+    /* ------------------------
+       Variables & Base
+       ------------------------ */
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.06);
+      --accent1: #7dd3fc; /* sky */
+      --accent2: #60a5fa; /* blue */
+      --accent3: #fbcfe8; /* soft rose */
+      --muted: rgba(255,255,255,0.6);
+      --radius:16px;
+      --glass-border: rgba(255,255,255,0.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.08), transparent),
+                  radial-gradient(800px 400px at 90% 90%, rgba(123,97,255,0.04), transparent),
+                  var(--bg);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+    }
+
+    /* ------------------------
+       Container
+       ------------------------ */
+    .container{max-width:1100px;margin:0 auto}
+
+    /* ------------------------
+       Header / Nav
+       ------------------------ */
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:20px;margin-bottom:28px
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:56px;height:56px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      box-shadow:0 6px 18px rgba(2,6,23,0.6), inset 0 -6px 18px rgba(255,255,255,0.06);
+      display:grid;place-items:center;font-weight:700;color:#07203b;font-size:20px
+    }
+    .brand h1{margin:0;font-size:20px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    .nav-links{display:flex;gap:12px;align-items:center}
+    .nav-links a{color:var(--muted);text-decoration:none;padding:10px 14px;border-radius:12px;font-weight:600}
+    .nav-links a:hover{background:rgba(255,255,255,0.03);color:#fff;transform:translateY(-2px)}
+
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#042b3b;font-weight:700;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(96,165,250,0.12);transition:all .2s}
+    .btn:active{transform:translateY(1px)}
+
+    /* ------------------------
+       Hero
+       ------------------------ */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:28px}
+
+    .card-hero{
+      background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border-radius:var(--radius);padding:28px;border:1px solid var(--glass-border);backdrop-filter: blur(6px);
+      box-shadow:0 10px 30px rgba(2,6,23,0.6);
+    }
+    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:700;color:var(--muted);font-size:12px}
+    .hero h2{margin:18px 0 10px;font-size:32px;line-height:1.03}
+    .hero p{color:var(--muted);margin:0 0 18px}
+
+    /* animated features list */
+    .features{display:flex;gap:12px;flex-wrap:wrap}
+    .feature{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px 14px;border-radius:12px;font-weight:600;color:var(--muted);display:flex;gap:10px;align-items:center}
+
+    /* right card with decorative pattern */
+    .right-visual{position:relative;padding:26px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--glass-border);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+    .pattern{position:absolute;inset:0;pointer-events:none;opacity:0.16;background-image:radial-gradient(circle at 10% 10%, rgba(255,255,255,0.02) 0, transparent 20%), linear-gradient(120deg, rgba(123,97,255,0.02), transparent);}
+    .pray-card{position:relative;z-index:2;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .pray-card h3{margin:0 0 8px}
+
+    /* ------------------------
+       Cards grid
+       ------------------------ */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
+    .card{background:var(--card);padding:18px;border-radius:14px;border:1px solid var(--glass-border);transition:transform .35s, box-shadow .35s}
+    .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+    .card h4{margin:0 0 10px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* ------------------------
+       Footer
+       ------------------------ */
+    footer{margin-top:36px;padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid var(--glass-border);display:flex;justify-content:space-between;align-items:center}
+
+    /* ------------------------
+       Small helpers & animations
+       ------------------------ */
+    .fade-in{animation:fadeIn .7s ease both}
+    @keyframes fadeIn{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+
+    .float{animation:float 6s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+    /* CTA ripple */
+    .btn--ripple{position:relative;overflow:hidden}
+    .btn--ripple span.ripple{position:absolute;border-radius:999px;transform:scale(0);animation:btnRipple .6s linear;opacity:0.7;background:rgba(255,255,255,0.45)}
+    @keyframes btnRipple{to{transform:scale(6);opacity:0}}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .right-visual{order:2}
+    }
+    @media (max-width:520px){
+      body{padding:18px}
+      .logo{width:46px;height:46px;font-size:18px}
+      .hero h2{font-size:26px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="nav fade-in" role="banner">
+      <div class="brand">
+        <div class="logo" aria-hidden="">نـ</div>
+        <div>
+          <h1>IslamicAura</h1>
+          <p>Light, design &amp; soul — beautiful Islamic UI</p>
+        </div>
+      </div>
+
+      <nav class="nav-links" role="navigation" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <button class="btn" id="primaryAction">Start Exploring</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card-hero fade-in">
+          <span class="kicker">Design • Faith • Calm</span>
+          <h2>Islamic-inspired visuals with modern UI — crafted like a designer from Canva.</h2>
+          <p>Clean glassmorphism, soft gradients, gentle motion and accessible interactions. Buttons are clickable, animations are subtle and everything works out-of-the-box.</p>
+
+          <div class="features" id="features">
+            <div class="feature">📱 Responsive</div>
+            <div class="feature">✨ Subtle animation</div>
+            <div class="feature">🎨 Canva-like style</div>
+            <div class="feature">🔒 Accessible</div>
+          </div>
+
+          <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn--ripple" id="donateBtn">Donate</button>
+            <button class="btn" id="learnBtn" style="background:transparent;color:var(--accent1);border:1px solid rgba(125,211,252,0.12)">Learn More</button>
+          </div>
+
+          <div class="grid" style="margin-top:18px">
+            <div class="card">
+              <h4>Daily reminders</h4>
+              <p>Automated cards to keep your Qur'anic schedule and daily duas in sight.</p>
+            </div>
+            <div class="card">
+              <h4>Beautiful Templates</h4>
+              <p>Canva-like ready-made graphics for events, announcements and social posts.</p>
+            </div>
+            <div class="card">
+              <h4>Shareable</h4>
+              <p>Easy social sharing and export options for every design.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="right-visual float">
+          <div class="pattern"></div>
+          <div class="pray-card">
+            <h3>Today's Inspiration</h3>
+            <p style="color:var(--muted)">"Indeed, with hardship comes ease." — Quran (94:6)</p>
+            <div style="height:18px"></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn" id="readMore">Read Verse</button>
+              <button class="btn" id="playAudio" style="background:transparent;color:var(--accent2);border:1px solid rgba(96,165,250,0.08)">Play Audio</button>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Secondary area -->
+      <section id="services" class="fade-in">
+        <h3 style="margin-top:8px">Services &amp; Tools</h3>
+        <div class="grid">
+          <div class="card">
+            <h4>Poster Creator</h4>
+            <p>Drag &amp; drop layout, adjustable text and Islamic-themed templates ready to export.</p>
+          </div>
+          <div class="card">
+            <h4>Prayer Times</h4>
+            <p>Location-based prayer times with gentle notifications (mocked in this demo).</p>
+          </div>
+          <div class="card">
+            <h4>Event Templates</h4>
+            <p>Handy templates for Ramadan, Eid &amp; community gatherings.</p>
+          </div>
+          <div class="card">
+            <h4>Community</h4>
+            <p>Share designs with others, or export them for print and social media.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact / CTA -->
+      <section id="contact" class="fade-in" style="margin-top:20px">
+        <div style="display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+          <div>
+            <h3>Get started with IslamicAura</h3>
+            <p style="color:var(--muted);max-width:520px">This demo is a single-file starter. Copy it into <code>index.html</code> and open in your browser. Buttons below are interactive — try them now.</p>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <button class="btn" id="tryBtn">Try Demo</button>
+            <button class="btn" id="downloadBtn" style="background:transparent;color:var(--accent3);border:1px solid rgba(251,207,232,0.06)">Download</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));display:grid;place-items:center;color:#042b3b;font-weight:700">نـ</div>
+        <div>
+          <strong>IslamicAura</strong><div style="font-size:12px;color:var(--muted)">Made with care • © 2025</div>
+        </div>
+      </div>
+      <div style="color:var(--muted);font-size:13px">Designed &amp; coded — demo template</div>
+    </footer>
+
+  </div>
+
+  <!-- Modal (hidden by default) -->
+  <div id="modal" role="dialog" aria-modal="true" aria-hidden="true" style="position: fixed; inset: 0px; display: grid; place-items: center; background: rgba(2, 6, 23, 0.6); padding: 20px; opacity: 0; pointer-events: none; transition: 0.25s;">
+    <div style="max-width:680px;width:100%;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border-radius:14px;padding:22px;border:1px solid var(--glass-border);backdrop-filter:blur(6px)">
+      <h3 id="modalTitle">Demo Mode</h3>
+      <p id="modalBody" style="color:var(--muted)">You opened demo mode — explore templates and copy HTML from the cards.</p>
+      <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px">
+        <button class="btn" id="modalClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ------------------------
+    // Tiny interactive layer
+    // ------------------------
+    function showModal(title, body){
+      const modal = document.getElementById('modal');
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalBody').textContent = body;
+      modal.style.opacity = '1';
+      modal.style.pointerEvents = 'auto';
+      modal.setAttribute('aria-hidden','false');
+    }
+    function hideModal(){
+      const modal = document.getElementById('modal');
+      modal.style.opacity = '0';
+      modal.style.pointerEvents = 'none';
+      modal.setAttribute('aria-hidden','true');
+    }
+
+    // Ripple effect for buttons with .btn--ripple
+    document.querySelectorAll('.btn--ripple').forEach(btn=>{
+      btn.addEventListener('click', function(e){
+        const rect = btn.getBoundingClientRect();
+        const span = document.createElement('span');
+        span.className = 'ripple';
+        const size = Math.max(rect.width, rect.height);
+        span.style.width = span.style.height = size + 'px';
+        span.style.left = (e.clientX - rect.left - size/2) + 'px';
+        span.style.top = (e.clientY - rect.top - size/2) + 'px';
+        btn.appendChild(span);
+        setTimeout(()=> span.remove(), 700);
+      })
+    })
+
+    // Buttons
+    document.getElementById('primaryAction').addEventListener('click', ()=>{
+      showModal('Explore IslamicAura', 'Thanks for clicking — this demo shows how your product can guide users gently. Try the other buttons too.');
+    })
+
+    document.getElementById('donateBtn').addEventListener('click', ()=>{
+      showModal('Support Community', 'This is a demo donation flow. Replace this with your payment provider integration (Stripe, PayPal, etc.)');
+    })
+
+    document.getElementById('readMore').addEventListener('click', ()=>{
+      showModal('Quranic Verse', '"Indeed, with hardship comes ease." — Quran (94:6). Reflect and share this design.');
+    })
+
+    document.getElementById('playAudio').addEventListener('click', ()=>{
+      showModal('Audio', 'Audio playback would start here in a real site. You can attach an <audio> element and call .play()');
+    })
+
+    document.getElementById('tryBtn').addEventListener('click', ()=>{
+      showModal('Demo Mode', 'You opened demo mode — explore templates and copy HTML from the cards.');
+    })
+
+    document.getElementById('modalClose').addEventListener('click', hideModal);
+
+    // Close modal on outside click
+    document.getElementById('modal').addEventListener('click', (e)=>{
+      if(e.target.id === 'modal') hideModal();
+    })
+
+    // Download demo (creates a small file and triggers download)
+    document.getElementById('downloadBtn').addEventListener('click', ()=>{
+      const html = '<!doctype html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'IslamicAura-demo.html';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    })
+
+    // Small accessibility: keyboard close modal
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') hideModal();
+    })
+  </script>
+
+
+</body></html>
